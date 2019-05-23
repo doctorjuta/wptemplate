@@ -1,5 +1,7 @@
-<?php get_header(); ?>
-    <?php if (have_posts()): while (have_posts()): the_post();?>
+<?php
 
-    <?php endwhile; endif; ?>
-<?php get_footer(); ?>
+$templates = array("archive.twig");
+$context = Timber::get_context();
+$context["title"] = __("Публікації", "dutchak");
+$context["posts"] = new Timber\PostQuery();
+Timber::render($templates, $context);
